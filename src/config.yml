@@ -1,0 +1,9 @@
+Setting:
+  Debug: false
+  Lang: en
+Worker:
+  DateFormat: 'YYYY-MM-dd HH:mm:ss'
+  Path: '/Workers'
+  Reward:
+    DayAmount: 10
+    MonthAmount: 300
