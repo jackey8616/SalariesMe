@@ -1,8 +1,16 @@
-Player_Add_Success: '新增玩家 %s 值勤職位 %s.'
+Player_Add_Success: '成功新增玩家 %s 值勤職位 %s.'
 Player_Add_Failed: '新增玩家的時候似乎出錯了...'
-Player_Add_Not_Online: '這名玩家目前不在線上.'
+
+Player_Remove_Success: '成功移除玩家 %s!'
+Player_Remove_Failed: '移除玩家的時候似乎出錯了...'
+
+Worker_Not_Online: '這名玩家目前不在線上.'
+
+List_No_Worker_Record: '沒有這名玩家的紀錄.'
 
 Worker_Duty_On: '你的值勤已經結束! 已經將你傳送回值勤前的位置.'
 Worker_Duty_Off: '你已經進入值勤模式! 設定觀察者模式.'
 
 You_Do_Not_Have_Permission: '你沒有這個權限.'
+
+Duty_Info: '值勤訊息'

@@ -41,14 +41,32 @@ public class Handler {
 
     public void saveWorkers () {
         for (Worker w : this.workers) {
-            w.saveFile(savedPath.getAbsolutePath());
+            w.saveFile();
         }
     }
 
     public boolean addWorker (UUID uuid, String positionName) {
-        Worker w = new Worker(uuid, positionName);
+        Worker w = new Worker(uuid, positionName, savedPath);
         workers.add(w);
-        return w.saveFile(savedPath);
+        return w.saveFile();
+    }
+
+    public boolean removeWorker (UUID uuid) {
+        Worker w = this.getWorker(uuid);
+        if (w != null) {
+            w.removeFile();
+            this.workers.remove(w);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removeWorker (Player player) {
+        return this.removeWorker(player.getUniqueId());
+    }
+
+    public ArrayList<Worker> getWorkers () {
+        return this.workers;
     }
 
     public Worker getWorker (UUID uuid) {

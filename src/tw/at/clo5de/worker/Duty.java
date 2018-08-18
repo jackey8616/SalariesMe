@@ -5,7 +5,6 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import tw.at.clo5de.SalariesMe;
@@ -14,12 +13,12 @@ import static org.bukkit.Bukkit.getServer;
 
 public class Duty {
 
-    private Worker worker = null;
+    private Worker worker;
     private boolean onDuty = false;
     private long dutyTick = 0;
     private Location location = null;
     private GameMode originMode = null;
-    private String positionName = null;
+    private String positionName;
     private String originPositionName = null;
 
     public Duty (Worker worker, MemorySection config) {
@@ -53,6 +52,23 @@ public class Duty {
         fileConfig.set("Duty.OnDuty", this.onDuty);
         fileConfig.set("Duty.PositionName", this.positionName);
         return fileConfig;
+    }
+
+    public String getDutyInfo () {
+        if (this.onDuty) {
+            return String.format("---------- [ " + SalariesMe.language.getText("Duty_Info") + " ] ----------\nDuty: %b\nWorld: %s\nXYZ: [%f, %f, %f]\nOriginGameMode: %s\nPosition: %s",
+                    this.onDuty,
+                    this.location.getWorld().getName(),
+                    this.location.getX(), this.location.getY(), this.location.getZ(),
+                    this.originMode.name(),
+                    this.positionName);
+        } else {
+            return String.format("---------- [ " + SalariesMe.language.getText("Duty_Info") + " ] ----------\nDuty: %b\nPosition: %s", this.onDuty, this.positionName);
+        }
+    }
+
+    public String getPositionName () {
+        return this.positionName;
     }
 
     public boolean isOnDuty () {

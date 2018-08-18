@@ -14,21 +14,28 @@ import static org.bukkit.Bukkit.getServer;
 
 public class Worker {
 
+    private File file = null;
     private UUID playerUUID = null;
     private Date lastLoginDate = null;
     private Duty duty = null;
 
     public Worker (File file) {
-        this.loadFile(file);
+        this.file = file;
+        this.loadFile();
     }
 
-    public Worker (UUID uuid, String positionName) {
+    public Worker (UUID uuid, String positionName, File folder) {
+        this(uuid, positionName, folder.getAbsolutePath());
+    }
+
+    public Worker (UUID uuid, String positionName, String filePath) {
         this.playerUUID = uuid;
         this.lastLoginDate = new Date();
         this.duty = new Duty(this, positionName);
+        this.file = new File(filePath + "/" + playerUUID.toString() + ".yml");
     }
 
-    public void loadFile (File file) {
+    public void loadFile () {
         try {
             FileConfiguration fileConfig = YamlConfiguration.loadConfiguration(file);
             this.playerUUID = UUID.fromString(fileConfig.getString("UUID"));
@@ -40,9 +47,8 @@ public class Worker {
         return;
     }
 
-    public boolean saveFile (String path) {
+    public boolean saveFile () {
         try {
-            File file = new File(path + "/" + this.getUUID() + ".yml");
             if (!file.exists()) {
                 file.createNewFile();
             }
@@ -58,8 +64,8 @@ public class Worker {
         return false;
     }
 
-    public boolean saveFile (File file) {
-        return this.saveFile(file.getAbsolutePath());
+    public boolean removeFile () {
+        return this.file.delete();
     }
 
     public UUID getUUID () {
@@ -80,5 +86,24 @@ public class Worker {
 
     public Duty getDuty() {
         return this.duty;
+    }
+
+    public String getInfo () {
+        Player p = getServer().getPlayer(this.playerUUID);
+        if (p != null) {
+            return String.format("Name: %s\n%s", p.getDisplayName(), this.duty.getDutyInfo());
+        } else {
+            return String.format("%s %s", getServer().getOfflinePlayer(this.playerUUID).getName(), this.duty.getDutyInfo());
+        }
+
+    }
+
+    public String getLessInfo () {
+        Player p = getServer().getPlayer(this.playerUUID);
+        if (p != null) {
+            return String.format("%s %s", p.getDisplayName(), this.duty.getPositionName());
+        } else {
+            return String.format("%s %s", getServer().getOfflinePlayer(this.playerUUID).getName(), this.duty.getPositionName());
+        }
     }
 }

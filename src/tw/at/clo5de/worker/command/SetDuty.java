@@ -5,13 +5,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import tw.at.clo5de.SalariesMe;
+import tw.at.clo5de.worker.Handler;
 import tw.at.clo5de.worker.Worker;
 
 import static org.bukkit.Bukkit.getServer;
 
 public class SetDuty {
 
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+    public boolean onCommand(Handler handler, CommandSender commandSender, Command command, String s, String[] strings) {
         Player p;
         if (commandSender instanceof ConsoleCommandSender) {
             // sm onduty [Player Name]

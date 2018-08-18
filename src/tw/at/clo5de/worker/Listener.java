@@ -39,7 +39,7 @@ public class Listener implements org.bukkit.event.Listener {
     public void onPlayerQuit (PlayerQuitEvent event) {
         Worker w = handler.getWorker(event.getPlayer());
         if (w != null) {
-            w.saveFile(handler.savedPath);
+            w.saveFile();
         }
     }
 

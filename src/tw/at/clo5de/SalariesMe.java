@@ -33,7 +33,7 @@ public class SalariesMe extends JavaPlugin {
         this.workerHandler = configManager.loadWorkerConfig();
         workerHandler.loadWorkers();
         this.command = new Command();
-        command.setExecutor();
+        command.setExecutor(workerHandler);
     }
 
     @Override
