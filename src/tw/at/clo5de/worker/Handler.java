@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import static org.bukkit.Bukkit.getServer;
+
 public class Handler {
 
     private Listener listener = null;
@@ -54,7 +56,13 @@ public class Handler {
     public boolean removeWorker (UUID uuid) {
         Worker w = this.getWorker(uuid);
         if (w != null) {
+            if (w.getDuty().isOnDuty()) {
+                w.getDuty().off();
+            }
             w.removeFile();
+            if (w.getPlayer().isOnline()) {
+                w.getPlayer().sendMessage(SalariesMe.language.getText("Your_Position_Has_Been_Removed"));
+            }
             this.workers.remove(w);
             return true;
         }

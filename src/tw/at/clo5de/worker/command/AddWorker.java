@@ -16,15 +16,23 @@ public class AddWorker {
     * */
     public boolean onCommand(Handler handler, CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof ConsoleCommandSender || (commandSender instanceof Player && commandSender.isOp())) {
-            Player p = getServer().getPlayer(strings[1]);
-            if (p != null) {
-                if (SalariesMe.workerHandler.addWorker(p.getUniqueId(), strings[2])) {
-                    commandSender.sendMessage(SalariesMe.language.getText("Player_Add_Success", strings[1], strings[2]));
-                } else {
-                    commandSender.sendMessage(SalariesMe.language.getText("Player_Add_Failed"));
-                }
+            if (strings.length < 2) {
+                commandSender.sendMessage(SalariesMe.language.getText("Miss_Or_Wrong_Player_Name"));
             } else {
-                commandSender.sendMessage(SalariesMe.language.getText("Worker_Not_Online"));
+                Player p = getServer().getPlayer(strings[1]);
+                if (p != null && p.isOnline()) {
+                    if (strings.length < 3) {
+                        commandSender.sendMessage(SalariesMe.language.getText("Miss_Position_Name"));
+                    } else {
+                        if (SalariesMe.workerHandler.addWorker(p.getUniqueId(), strings[2])) {
+                            commandSender.sendMessage(SalariesMe.language.getText("Player_Add_Success", strings[1], strings[2]));
+                        } else {
+                            commandSender.sendMessage(SalariesMe.language.getText("Player_Add_Failed"));
+                        }
+                    }
+                } else {
+                    commandSender.sendMessage(SalariesMe.language.getText("Worker_Not_Online"));
+                }
             }
         } else {
             commandSender.sendMessage(SalariesMe.language.getText("You_Do_Not_Have_Permission"));

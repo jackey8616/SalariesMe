@@ -4,8 +4,6 @@ import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import tw.at.clo5de.SalariesMe;
-import tw.at.clo5de.utils.lang.Language;
-import tw.at.clo5de.worker.Handler;
 
 public class Config_Manager {
 
@@ -33,11 +31,11 @@ public class Config_Manager {
         }
     }
 
-    public Handler loadWorkerConfig () {
-        return new Handler((MemorySection) this.config.get("Worker"));
+    public String loadLangConfig () {
+        return this.lang;
     }
 
-    public Language loadLangConfig () {
-        return new Language(this.lang);
+    public MemorySection loadWorkerConfig () {
+        return (MemorySection) this.config.get("Worker");
     }
 }

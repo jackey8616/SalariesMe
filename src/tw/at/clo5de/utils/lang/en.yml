@@ -1,9 +1,14 @@
 Player_Add_Success: 'You successfully added Player %s with Position %s.'
 Player_Add_Failed: 'Oops, there must be something wrong during adding player.'
+Miss_Position_Name: 'Please enter position name.'
 
 Player_Remove_Success: 'You successfully removed Player %s'
 Player_Remove_Failed: 'Oops, there must be something wrong during removing player.'
+Your_Position_Has_Been_Removed: 'Your position has been removed.'
 
+Miss_Or_Wrong_Player_Name: 'Missing or wrong player name.'
+
+Player_Is_Not_Worker: 'This player is not our worker.'
 Worker_Not_Online: 'This worker is not online'
 
 List_No_Worker_Record: 'There is no worker records.'

@@ -7,12 +7,12 @@ import tw.at.clo5de.SalariesMe;
 
 import java.io.*;
 
-public class Language {
+public class Lang_uage {
 
-    private File langFile = null;
-    private MemorySection config = null;
+    private File langFile;
+    private MemorySection config;
 
-    public Language (String langFileName) {
+    public Lang_uage (String langFileName) {
         this.langFile = new File(SalariesMe.INSTANCE.getDataFolder().getAbsolutePath() + "/Lang/" + langFileName + ".yml");
         if (!this.langFile.exists()) {
             this.langFile.getParentFile().mkdirs();
@@ -36,7 +36,7 @@ public class Language {
     }
 
     public String getText (String key, String ... value) {
-        String text = config.getString(key);
+        String text = this.config.getString(key);
         if (value.length != 0) {
             return StringFormatter.format(text, (Object[]) value).get();
         } else {

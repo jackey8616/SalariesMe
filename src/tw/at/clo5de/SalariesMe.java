@@ -4,7 +4,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import tw.at.clo5de.invoke.GMInvoke;
 import tw.at.clo5de.invoke.VaultInvoke;
 import tw.at.clo5de.utils.Config_Manager;
-import tw.at.clo5de.utils.lang.Language;
+import tw.at.clo5de.utils.lang.Lang_uage;
+import tw.at.clo5de.worker.Handler;
 import tw.at.clo5de.worker.command.Command;
 
 import java.util.logging.Logger;
@@ -17,7 +18,7 @@ public class SalariesMe extends JavaPlugin {
     public static GMInvoke gmInvoke = new GMInvoke();
 
     public static Config_Manager configManager = null;
-    public static Language language = null;
+    public static Lang_uage language = null;
     public static tw.at.clo5de.worker.Handler workerHandler = null;
     public static Command command = null;
 
@@ -29,8 +30,8 @@ public class SalariesMe extends JavaPlugin {
 
         this.configManager = new Config_Manager(this);
         configManager.loadConfig();
-        this.language = configManager.loadLangConfig();
-        this.workerHandler = configManager.loadWorkerConfig();
+        this.language = new Lang_uage(configManager.loadLangConfig());
+        this.workerHandler = new Handler(configManager.loadWorkerConfig());
         workerHandler.loadWorkers();
         this.command = new Command();
         command.setExecutor(workerHandler);
