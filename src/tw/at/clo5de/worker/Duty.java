@@ -19,12 +19,14 @@ public class Duty {
     private Location location = null;
     private GameMode originMode = null;
     private String positionName;
+    private Position position;
     private String originPositionName = null;
 
     public Duty (Worker worker, MemorySection config) {
         this.worker = worker;
         this.onDuty = config.getBoolean("OnDuty");
         this.positionName = config.getString("PositionName");
+        this.position = config.getString("Position");
         if (this.onDuty) {
             this.dutyTick = config.getLong("Tick");
             World world = getServer().getWorld(config.getString("World"));

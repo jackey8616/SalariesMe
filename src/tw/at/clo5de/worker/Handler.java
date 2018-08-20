@@ -14,17 +14,19 @@ import static org.bukkit.Bukkit.getServer;
 public class Handler {
 
     private Listener listener = null;
+    private tw.at.clo5de.worker.position.Handler positionHandler;
 
     public String dateFormat = null;
     public File savedPath = null;
-    private ArrayList<Worker> workers = new ArrayList<>();
     public Reward reward = null;
+    private ArrayList<Worker> workers = new ArrayList<>();
 
     public Handler (MemorySection config) {
         try {
             this.dateFormat = config.getString("DateFormat");
             this.savedPath = new File(SalariesMe.INSTANCE.getDataFolder().getAbsolutePath() + "/" + config.getString("Path"));
             this.reward = new Reward((MemorySection) config.get("Reward"));
+            this.positionHandler = new tw.at.clo5de.worker.position.Handler(this, (MemorySection) config.get("Position"));
             listener = new Listener(this, SalariesMe.INSTANCE);
             SalariesMe.logger.info("Worker Handler loaded.");
         } catch (Exception e) {

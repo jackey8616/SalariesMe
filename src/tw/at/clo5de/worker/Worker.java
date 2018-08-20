@@ -35,6 +35,12 @@ public class Worker {
         this.file = new File(filePath + "/" + playerUUID.toString() + ".yml");
     }
 
+    public Worker (UUID uuid, Position position, String filePath) {
+        this.playerUUID = uuid;
+        this.lastLoginDate = new Date();
+        
+    }
+
     public void loadFile () {
         try {
             FileConfiguration fileConfig = YamlConfiguration.loadConfiguration(file);

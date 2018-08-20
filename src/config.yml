@@ -7,3 +7,8 @@ Worker:
   Reward:
     DayAmount: 10
     MonthAmount: 300
+  Position:
+    - Name: Builder
+      GameMode: CREATIVE
+    - Name: Moderator
+      GameMode: SPECTATOR
