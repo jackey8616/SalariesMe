@@ -6,6 +6,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import tw.at.clo5de.SalariesMe;
 import tw.at.clo5de.worker.Handler;
+import tw.at.clo5de.worker.position.Position;
 
 import static org.bukkit.Bukkit.getServer;
 
@@ -24,10 +25,15 @@ public class AddWorker {
                     if (strings.length < 3) {
                         commandSender.sendMessage(SalariesMe.language.getText("Miss_Position_Name"));
                     } else {
-                        if (SalariesMe.workerHandler.addWorker(p.getUniqueId(), strings[2])) {
-                            commandSender.sendMessage(SalariesMe.language.getText("Player_Add_Success", strings[1], strings[2]));
+                        Position position = SalariesMe.workerHandler.positionHandler.getByString(strings[2]);
+                        if (position == null) {
+                            commandSender.sendMessage(SalariesMe.language.getText("Position_Not_Exists"));
                         } else {
-                            commandSender.sendMessage(SalariesMe.language.getText("Player_Add_Failed"));
+                            if (SalariesMe.workerHandler.addWorker(p.getUniqueId(), position)) {
+                                commandSender.sendMessage(SalariesMe.language.getText("Player_Add_Success", strings[1], strings[2]));
+                            } else {
+                                commandSender.sendMessage(SalariesMe.language.getText("Player_Add_Failed"));
+                            }
                         }
                     }
                 } else {

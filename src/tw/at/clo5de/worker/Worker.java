@@ -5,6 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import tw.at.clo5de.SalariesMe;
+import tw.at.clo5de.worker.position.Position;
 
 import java.io.File;
 import java.util.Date;
@@ -14,7 +15,7 @@ import static org.bukkit.Bukkit.getServer;
 
 public class Worker {
 
-    private File file = null;
+    private File file;
     private UUID playerUUID = null;
     private Date lastLoginDate = null;
     private Duty duty = null;
@@ -24,21 +25,15 @@ public class Worker {
         this.loadFile();
     }
 
-    public Worker (UUID uuid, String positionName, File folder) {
-        this(uuid, positionName, folder.getAbsolutePath());
-    }
-
-    public Worker (UUID uuid, String positionName, String filePath) {
-        this.playerUUID = uuid;
-        this.lastLoginDate = new Date();
-        this.duty = new Duty(this, positionName);
-        this.file = new File(filePath + "/" + playerUUID.toString() + ".yml");
+    public Worker (UUID uuid, Position position, File file) {
+        this(uuid, position, file.getAbsolutePath());
     }
 
     public Worker (UUID uuid, Position position, String filePath) {
         this.playerUUID = uuid;
         this.lastLoginDate = new Date();
-        
+        this.duty = new Duty(this, position);
+        this.file = new File(filePath + "/" + playerUUID.toString() + ".yml");
     }
 
     public void loadFile () {

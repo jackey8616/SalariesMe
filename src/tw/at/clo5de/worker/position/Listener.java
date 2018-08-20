@@ -1,10 +1,10 @@
 package tw.at.clo5de.worker.position;
 
-class Listener implements org.bukkit.events.Listener {
+class Listener implements org.bukkit.event.Listener {
 
-    private Handler handelr;
+    private Handler handler;
 
-    public Listene (Handler handler) {
+    public Listener (Handler handler) {
         this.handler = handler;
     }
 

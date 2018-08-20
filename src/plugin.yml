@@ -6,7 +6,19 @@ depend: [ Vault, GroupManager ]
 commands:
   sm:
     description: SalariesMe command
-    usage: /sm [args]
+    usage: |
+      /sm list/ls                    - List all workers.
+      /sm list-position/ls-pos       - List all positions.
+      /sm info [Player]              - List a worker's duty info.
+      /sm add [Player] [Position]    - Add a player with position.
+      /sm remove/rm [Player]         - Remove a player from position.
+      /sm onduty [Player(Optional)]  - Toggle [self/player's]on/off duty
   SalariesMe:
     description: SalariesMe command
-    usage: /sm [args]
+    usage: |
+      /sm list/ls                    - List all workers.
+      /sm list-position/ls-pos       - List all positions.
+      /sm info [Player]              - List a worker's duty info.
+      /sm add [Player] [Position]    - Add a player with position.
+      /sm remove/rm [Player]         - Remove a player from position.
+      /sm onduty [Player(Optional)]  - Toggle [self/player's]on/off duty

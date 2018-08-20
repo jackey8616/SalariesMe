@@ -26,6 +26,8 @@ public class Command implements CommandExecutor {
                 return new RemoveWorker().onCommand(this.handler, commandSender, command, s, strings);
             } else if (strings[0].equalsIgnoreCase("list") || strings[0].equalsIgnoreCase("ls")) {
                 return new ListWorker().onCommand(this.handler, commandSender, command, s, strings);
+            } else if (strings[0].equalsIgnoreCase("list-position") || strings[0].equalsIgnoreCase("ls-pos")) {
+                return new ListPosition().onCommand(this.handler, commandSender, command, s, strings);
             } else if (strings[0].equalsIgnoreCase("info")) {
                 return new InfoWorker().onCommand(this.handler, commandSender, command, s, strings);
             } else if (strings[0].equalsIgnoreCase("onDuty")) {

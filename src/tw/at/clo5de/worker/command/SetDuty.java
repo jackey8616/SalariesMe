@@ -24,10 +24,10 @@ public class SetDuty {
         Worker w = SalariesMe.workerHandler.getWorker(p);
         if (w.getDuty().isOnDuty()) {
             w.getDuty().off();
-            p.sendMessage(SalariesMe.language.getText("Worker_Duty_On"));
-        } else {
-            w.getDuty().on();
             p.sendMessage(SalariesMe.language.getText("Worker_Duty_Off"));
+        } else {
+            p.sendMessage(SalariesMe.language.getText("Worker_Duty_On", w.getDuty().getPosition().getGameModeString()));
+            w.getDuty().on();
         }
         return true;
     }

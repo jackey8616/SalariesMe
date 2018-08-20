@@ -1,7 +1,9 @@
-package tw.at.clo5de.worker;
+package tw.at.clo5de.worker.position;
 
-import org.bukkit.entity.Player;
+import org.bukkit.GameMode;
 import tw.at.clo5de.SalariesMe;
+
+import java.util.Map;
 
 public class Position {
 
@@ -9,8 +11,8 @@ public class Position {
     private GameMode gamemode;
 
     public Position (Map map) {
-        this.positionName = map.get("Name");
-        this.gamemode = GameMode.get(map.get("GameMode"));
+        this.positionName = map.get("Name").toString();
+        this.gamemode = GameMode.valueOf((String) map.get("GameMode"));
     }
 
     public String getPositionName () {
@@ -19,6 +21,10 @@ public class Position {
 
     public GameMode getGameMode () {
         return this.gamemode;
+    }
+
+    public String getGameModeString () {
+        return SalariesMe.language.getText(this.gamemode.name());
     }
 
     public void setPositionName (String newName) {

@@ -1,6 +1,7 @@
 Player_Add_Success: 'You successfully added Player %s with Position %s.'
 Player_Add_Failed: 'Oops, there must be something wrong during adding player.'
 Miss_Position_Name: 'Please enter position name.'
+Position_Not_Exists: 'Position is not exists.'
 
 Player_Remove_Success: 'You successfully removed Player %s'
 Player_Remove_Failed: 'Oops, there must be something wrong during removing player.'
@@ -12,10 +13,15 @@ Player_Is_Not_Worker: 'This player is not our worker.'
 Worker_Not_Online: 'This worker is not online'
 
 List_No_Worker_Record: 'There is no worker records.'
+List_No_Position_Record: 'There is no position records.'
 
-Worker_Duty_On: 'You are off duty now! Teleport you to on duty location.'
-Worker_Duty_Off: 'You are on duty now! Set your mode into Spectator.'
+Worker_Duty_On: 'You are on duty now! Set your mode into %s.'
+Worker_Duty_Off: 'You are off duty now! Teleport you to on duty location.'
 
 You_Do_Not_Have_Permission: 'You do not have that permission.'
 
 Duty_Info: 'Duty Info'
+CREATIVE: 'Creative'
+SURVIVAL: 'Survival'
+ADVENTURE: 'Adventure'
+SPECTATOR: 'Spectator'

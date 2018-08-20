@@ -8,6 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import tw.at.clo5de.SalariesMe;
+import tw.at.clo5de.worker.position.Position;
 
 import static org.bukkit.Bukkit.getServer;
 
@@ -18,15 +19,13 @@ public class Duty {
     private long dutyTick = 0;
     private Location location = null;
     private GameMode originMode = null;
-    private String positionName;
     private Position position;
     private String originPositionName = null;
 
     public Duty (Worker worker, MemorySection config) {
         this.worker = worker;
         this.onDuty = config.getBoolean("OnDuty");
-        this.positionName = config.getString("PositionName");
-        this.position = config.getString("Position");
+        this.position = SalariesMe.workerHandler.positionHandler.getByString(config.getString("Position"));
         if (this.onDuty) {
             this.dutyTick = config.getLong("Tick");
             World world = getServer().getWorld(config.getString("World"));
@@ -36,9 +35,9 @@ public class Duty {
         }
     }
 
-    public Duty (Worker worker, String positionName) {
+    public Duty (Worker worker, Position position) {
         this.worker = worker;
-        this.positionName = positionName;
+        this.position = position;
     }
 
     public FileConfiguration saveFile (FileConfiguration fileConfig) {
@@ -52,7 +51,7 @@ public class Duty {
             fileConfig.set("Duty.OriginPositionName", this.originPositionName);
         }
         fileConfig.set("Duty.OnDuty", this.onDuty);
-        fileConfig.set("Duty.PositionName", this.positionName);
+        fileConfig.set("Duty.Position", this.position.getPositionName());
         return fileConfig;
     }
 
@@ -63,14 +62,18 @@ public class Duty {
                     this.location.getWorld().getName(),
                     this.location.getX(), this.location.getY(), this.location.getZ(),
                     this.originMode.name(),
-                    this.positionName);
+                    this.position.getPositionName());
         } else {
-            return String.format("---------- [ " + SalariesMe.language.getText("Duty_Info") + " ] ----------\nDuty: %b\nPosition: %s", this.onDuty, this.positionName);
+            return String.format("---------- [ " + SalariesMe.language.getText("Duty_Info") + " ] ----------\nDuty: %b\nPosition: %s", this.onDuty, this.position.getPositionName());
         }
     }
 
+    public Position getPosition () {
+        return this.position;
+    }
+
     public String getPositionName () {
-        return this.positionName;
+        return this.position.getPositionName();
     }
 
     public boolean isOnDuty () {
@@ -81,8 +84,8 @@ public class Duty {
         this.location = worker.getPlayer().getLocation();
         this.originMode = worker.getPlayer().getGameMode();
         this.originPositionName = SalariesMe.gmInvoke.getGroup(this.worker);
-        worker.getPlayer().setGameMode(GameMode.SPECTATOR);
-        SalariesMe.gmInvoke.setGroup(this.worker, this.positionName);
+        worker.getPlayer().setGameMode(this.position.getGameMode());
+        SalariesMe.gmInvoke.setGroup(this.worker, this.position);
         this.onDuty = true;
     }
 

@@ -3,18 +3,17 @@ package tw.at.clo5de.worker;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.entity.Player;
 import tw.at.clo5de.SalariesMe;
+import tw.at.clo5de.worker.position.Position;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import static org.bukkit.Bukkit.getServer;
-
 public class Handler {
 
     private Listener listener = null;
-    private tw.at.clo5de.worker.position.Handler positionHandler;
+    public tw.at.clo5de.worker.position.Handler positionHandler;
 
     public String dateFormat = null;
     public File savedPath = null;
@@ -26,7 +25,7 @@ public class Handler {
             this.dateFormat = config.getString("DateFormat");
             this.savedPath = new File(SalariesMe.INSTANCE.getDataFolder().getAbsolutePath() + "/" + config.getString("Path"));
             this.reward = new Reward((MemorySection) config.get("Reward"));
-            this.positionHandler = new tw.at.clo5de.worker.position.Handler(this, (MemorySection) config.get("Position"));
+            this.positionHandler = new tw.at.clo5de.worker.position.Handler(this, config);
             listener = new Listener(this, SalariesMe.INSTANCE);
             SalariesMe.logger.info("Worker Handler loaded.");
         } catch (Exception e) {
@@ -49,8 +48,8 @@ public class Handler {
         }
     }
 
-    public boolean addWorker (UUID uuid, String positionName) {
-        Worker w = new Worker(uuid, positionName, savedPath);
+    public boolean addWorker (UUID uuid, Position position) {
+        Worker w = new Worker(uuid, position, savedPath);
         workers.add(w);
         return w.saveFile();
     }

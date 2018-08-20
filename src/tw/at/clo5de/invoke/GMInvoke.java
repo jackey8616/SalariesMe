@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import tw.at.clo5de.SalariesMe;
 import tw.at.clo5de.worker.Worker;
+import tw.at.clo5de.worker.position.Position;
 
 import java.util.Arrays;
 import java.util.List;
@@ -51,6 +52,10 @@ public class GMInvoke {
         }
         handler.getUser(base.getName()).setGroup(handler.getGroup(group));
         return true;
+    }
+
+    public boolean setGroup(final Worker worker, final Position position) {
+        return this.setGroup(worker.getPlayer(), position.getPositionName());
     }
 
     public boolean setGroup(final Worker worker, final String group) {
