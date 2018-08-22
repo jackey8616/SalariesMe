@@ -31,7 +31,7 @@ public class Duty {
             World world = getServer().getWorld(config.getString("World"));
             this.location = new Location(world, config.getDouble("X"), config.getDouble("Y"), config.getDouble("Z"));
             this.originMode = GameMode.valueOf(config.getString("GameMode"));
-            this.originPositionName = SalariesMe.gmInvoke.getGroup(worker.getPlayer());
+            this.originPositionName = config.getString("OriginPositionName");
         }
     }
 

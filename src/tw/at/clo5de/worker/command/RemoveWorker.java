@@ -1,5 +1,6 @@
 package tw.at.clo5de.worker.command;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -19,14 +20,15 @@ public class RemoveWorker {
                 commandSender.sendMessage(SalariesMe.language.getText("Miss_Or_Wrong_Player_Name"));
             } else {
                 Player p = getServer().getPlayer(strings[1]);
-                if (p != null) {
-                    if (SalariesMe.workerHandler.removeWorker(p.getUniqueId())) {
+                if (p != null && p.isOnline() && SalariesMe.workerHandler.removeWorker(p.getUniqueId())) {
+                    commandSender.sendMessage(SalariesMe.language.getText("Player_Remove_Success", strings[1]));
+                } else {
+                    OfflinePlayer offlinePlayer = SalariesMe.workerHandler.findOfflinePlayer(strings[1]);
+                    if (SalariesMe.workerHandler.removeWorker(offlinePlayer.getUniqueId())) {
                         commandSender.sendMessage(SalariesMe.language.getText("Player_Remove_Success", strings[1]));
                     } else {
                         commandSender.sendMessage(SalariesMe.language.getText("Player_Remove_Failed"));
                     }
-                } else {
-                    commandSender.sendMessage(SalariesMe.language.getText("Worker_Not_Online"));
                 }
             }
         } else {

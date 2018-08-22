@@ -101,7 +101,7 @@ public class Worker {
 
     public String getLessInfo () {
         Player p = getServer().getPlayer(this.playerUUID);
-        if (p != null) {
+        if (p != null && p.isOnline()) {
             return String.format("%s %s", p.getDisplayName(), this.duty.getPositionName());
         } else {
             return String.format("%s %s", getServer().getOfflinePlayer(this.playerUUID).getName(), this.duty.getPositionName());

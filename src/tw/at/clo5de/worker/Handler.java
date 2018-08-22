@@ -1,5 +1,6 @@
 package tw.at.clo5de.worker;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.entity.Player;
 import tw.at.clo5de.SalariesMe;
@@ -9,6 +10,8 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.UUID;
+
+import static org.bukkit.Bukkit.getServer;
 
 public class Handler {
 
@@ -57,13 +60,13 @@ public class Handler {
     public boolean removeWorker (UUID uuid) {
         Worker w = this.getWorker(uuid);
         if (w != null) {
-            if (w.getDuty().isOnDuty()) {
-                w.getDuty().off();
-            }
-            w.removeFile();
-            if (w.getPlayer().isOnline()) {
+            if (w.getPlayer() != null && w.getPlayer().isOnline()) {
+                if (w.getDuty().isOnDuty()) {
+                    w.getDuty().off();
+                }
                 w.getPlayer().sendMessage(SalariesMe.language.getText("Your_Position_Has_Been_Removed"));
             }
+            w.removeFile();
             this.workers.remove(w);
             return true;
         }
@@ -94,4 +97,14 @@ public class Handler {
     public SimpleDateFormat getFormatter () {
         return new SimpleDateFormat(this.dateFormat);
     }
+
+    public OfflinePlayer findOfflinePlayer (String name) {
+        for (OfflinePlayer player : getServer().getOfflinePlayers()) {
+            if (player.getName().equalsIgnoreCase(name)) {
+                return player;
+            }
+        }
+        return null;
+    }
+
 }
