@@ -16,6 +16,7 @@ List_No_Worker_Record: '沒有可讀取的玩家紀錄.'
 List_No_Position_Record: '沒有可讀取的職位紀錄.'
 
 Worker_Duty_Off: '你的值勤已經結束! 已經將你傳送回值勤前的位置.'
+No_Duty_In_This_World: '你在這個世界沒有勤務.'
 Worker_Duty_On: '你已經進入值勤模式! 設定 %s 模式.'
 
 You_Do_Not_Have_Permission: '你沒有這個權限.'

@@ -10,5 +10,9 @@ Worker:
   Position:
     - Name: Builder
       GameMode: CREATIVE
+      World:
+      - world
     - Name: Moderator
       GameMode: SPECTATOR
+      World:
+      - world

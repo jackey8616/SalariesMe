@@ -26,8 +26,12 @@ public class SetDuty {
             w.getDuty().off();
             p.sendMessage(SalariesMe.language.getText("Worker_Duty_Off"));
         } else {
-            p.sendMessage(SalariesMe.language.getText("Worker_Duty_On", w.getDuty().getPosition().getGameModeString()));
-            w.getDuty().on();
+            if (w.getDuty().getPosition().containWorld(p.getWorld())) {
+                w.getDuty().on();
+                p.sendMessage(SalariesMe.language.getText("Worker_Duty_On", w.getDuty().getPosition().getGameModeString()));
+            } else {
+                p.getPlayer().sendMessage(SalariesMe.language.getText("No_Duty_In_This_World"));
+            }
         }
         return true;
     }
