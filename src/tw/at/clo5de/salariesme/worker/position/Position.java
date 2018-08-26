@@ -1,8 +1,8 @@
-package tw.at.clo5de.worker.position;
+package tw.at.clo5de.salariesme.worker.position;
 
 import org.bukkit.GameMode;
 import org.bukkit.World;
-import tw.at.clo5de.SalariesMe;
+import tw.at.clo5de.salariesme.SalariesMe;
 
 import java.util.ArrayList;
 import java.util.List;

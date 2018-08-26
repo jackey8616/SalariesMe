@@ -1,23 +1,23 @@
-package tw.at.clo5de.utils.lang;
+package tw.at.clo5de.salariesme.utils.lang;
 
 import com.sun.javafx.binding.StringFormatter;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.YamlConfiguration;
-import tw.at.clo5de.SalariesMe;
+import tw.at.clo5de.salariesme.SalariesMe;
 
 import java.io.*;
 
-public class Lang_uage {
+public class Language {
 
     private File langFile;
     private MemorySection config;
 
-    public Lang_uage (String langFileName) {
+    public Language(String langFileName) {
         this.langFile = new File(SalariesMe.INSTANCE.getDataFolder().getAbsolutePath() + "/Lang/" + langFileName + ".yml");
         if (!this.langFile.exists()) {
             this.langFile.getParentFile().mkdirs();
             try {
-                InputStream fin = getClass().getResourceAsStream("/tw/at/clo5de/utils/lang/" + langFileName + ".yml");
+                InputStream fin = getClass().getResourceAsStream("/tw/at/clo5de/salariesme/utils/lang/" + langFileName + ".yml");
                 OutputStream os = new FileOutputStream(this.langFile);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(fin, "UTF-8"));
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));

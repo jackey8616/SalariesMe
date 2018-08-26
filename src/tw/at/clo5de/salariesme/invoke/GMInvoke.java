@@ -1,13 +1,13 @@
-package tw.at.clo5de.invoke;
+package tw.at.clo5de.salariesme.invoke;
 
 import org.anjocaido.groupmanager.GroupManager;
 import org.anjocaido.groupmanager.dataholder.OverloadedWorldHolder;
 import org.anjocaido.groupmanager.permissions.AnjoPermissionsHandler;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import tw.at.clo5de.SalariesMe;
-import tw.at.clo5de.worker.Worker;
-import tw.at.clo5de.worker.position.Position;
+import tw.at.clo5de.salariesme.SalariesMe;
+import tw.at.clo5de.salariesme.worker.Worker;
+import tw.at.clo5de.salariesme.worker.position.Position;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,11 +1,11 @@
-package tw.at.clo5de.worker;
+package tw.at.clo5de.salariesme.worker;
 
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
-import tw.at.clo5de.SalariesMe;
-import tw.at.clo5de.worker.position.Position;
+import tw.at.clo5de.salariesme.SalariesMe;
+import tw.at.clo5de.salariesme.worker.position.Position;
 
 import java.io.File;
 import java.util.Date;

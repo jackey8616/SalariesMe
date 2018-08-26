@@ -1,7 +1,7 @@
-package tw.at.clo5de.worker.position;
+package tw.at.clo5de.salariesme.worker.position;
 
 import org.bukkit.configuration.MemorySection;
-import tw.at.clo5de.SalariesMe;
+import tw.at.clo5de.salariesme.SalariesMe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +11,12 @@ import static org.bukkit.Bukkit.getServer;
 
 public class Handler {
 
-    private tw.at.clo5de.worker.Handler handler;
+    private tw.at.clo5de.salariesme.worker.Handler handler;
     private Listener listener;
     
     private ArrayList<Position> positions = new ArrayList<>();
 
-    public Handler (tw.at.clo5de.worker.Handler handler, MemorySection config) {
+    public Handler (tw.at.clo5de.salariesme.worker.Handler handler, MemorySection config) {
         if (this.loadPositions(config)) {
             this.handler = handler;
             this.listener = new Listener(this);

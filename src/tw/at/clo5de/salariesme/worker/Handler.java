@@ -1,10 +1,10 @@
-package tw.at.clo5de.worker;
+package tw.at.clo5de.salariesme.worker;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.entity.Player;
-import tw.at.clo5de.SalariesMe;
-import tw.at.clo5de.worker.position.Position;
+import tw.at.clo5de.salariesme.SalariesMe;
+import tw.at.clo5de.salariesme.worker.position.Position;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -16,7 +16,7 @@ import static org.bukkit.Bukkit.getServer;
 public class Handler {
 
     private Listener listener = null;
-    public tw.at.clo5de.worker.position.Handler positionHandler;
+    public tw.at.clo5de.salariesme.worker.position.Handler positionHandler;
 
     public String dateFormat = null;
     public File savedPath = null;
@@ -28,7 +28,7 @@ public class Handler {
             this.dateFormat = config.getString("DateFormat");
             this.savedPath = new File(SalariesMe.INSTANCE.getDataFolder().getAbsolutePath() + "/" + config.getString("Path"));
             this.reward = new Reward((MemorySection) config.get("Reward"));
-            this.positionHandler = new tw.at.clo5de.worker.position.Handler(this, config);
+            this.positionHandler = new tw.at.clo5de.salariesme.worker.position.Handler(this, config);
             listener = new Listener(this, SalariesMe.INSTANCE);
             SalariesMe.logger.info("Worker Handler loaded.");
         } catch (Exception e) {

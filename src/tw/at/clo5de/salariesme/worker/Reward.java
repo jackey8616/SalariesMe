@@ -1,4 +1,4 @@
-package tw.at.clo5de.worker;
+package tw.at.clo5de.salariesme.worker;
 
 import org.bukkit.configuration.MemorySection;
 

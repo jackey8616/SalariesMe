@@ -1,10 +1,10 @@
-package tw.at.clo5de.worker;
+package tw.at.clo5de.salariesme.worker;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import tw.at.clo5de.SalariesMe;
+import tw.at.clo5de.salariesme.SalariesMe;
 
 import java.util.Date;
 

@@ -1,7 +1,7 @@
 name: SalariesMe
-version: 0.0.4
+version: 0.0.41
 author: clo5de
-main: tw.at.clo5de.SalariesMe
+main: tw.at.clo5de.salariesme.SalariesMe
 depend: [ Vault, GroupManager ]
 commands:
   sm:

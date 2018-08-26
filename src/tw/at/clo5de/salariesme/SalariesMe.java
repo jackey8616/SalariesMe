@@ -1,12 +1,12 @@
-package tw.at.clo5de;
+package tw.at.clo5de.salariesme;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import tw.at.clo5de.invoke.GMInvoke;
-import tw.at.clo5de.invoke.VaultInvoke;
-import tw.at.clo5de.utils.Config_Manager;
-import tw.at.clo5de.utils.lang.Lang_uage;
-import tw.at.clo5de.worker.Handler;
-import tw.at.clo5de.worker.command.Command;
+import tw.at.clo5de.salariesme.invoke.GMInvoke;
+import tw.at.clo5de.salariesme.invoke.VaultInvoke;
+import tw.at.clo5de.salariesme.utils.ConfigManager;
+import tw.at.clo5de.salariesme.utils.lang.Language;
+import tw.at.clo5de.salariesme.worker.Handler;
+import tw.at.clo5de.salariesme.worker.command.Command;
 
 import java.util.logging.Logger;
 
@@ -17,9 +17,9 @@ public class SalariesMe extends JavaPlugin {
     public static VaultInvoke vaultInvoke = new VaultInvoke();
     public static GMInvoke gmInvoke = new GMInvoke();
 
-    public static Config_Manager configManager = null;
-    public static Lang_uage language = null;
-    public static tw.at.clo5de.worker.Handler workerHandler = null;
+    public static ConfigManager configManager = null;
+    public static Language language = null;
+    public static tw.at.clo5de.salariesme.worker.Handler workerHandler = null;
     public static Command command = null;
 
     @Override
@@ -28,9 +28,9 @@ public class SalariesMe extends JavaPlugin {
         vaultInvoke.invoke();
         gmInvoke.invoke();
 
-        this.configManager = new Config_Manager(this);
+        this.configManager = new ConfigManager(this);
         configManager.loadConfig();
-        this.language = new Lang_uage(configManager.loadLangConfig());
+        this.language = new Language(configManager.loadLangConfig());
         this.workerHandler = new Handler(configManager.loadWorkerConfig());
         workerHandler.loadWorkers();
         this.command = new Command();

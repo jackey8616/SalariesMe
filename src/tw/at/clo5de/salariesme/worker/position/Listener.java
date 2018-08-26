@@ -1,4 +1,4 @@
-package tw.at.clo5de.worker.position;
+package tw.at.clo5de.salariesme.worker.position;
 
 class Listener implements org.bukkit.event.Listener {
 

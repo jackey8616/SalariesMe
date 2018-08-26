@@ -1,11 +1,11 @@
-package tw.at.clo5de.utils;
+package tw.at.clo5de.salariesme.utils;
 
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import tw.at.clo5de.SalariesMe;
+import tw.at.clo5de.salariesme.SalariesMe;
 
-public class Config_Manager {
+public class ConfigManager {
 
     private JavaPlugin plugin = null;
     private FileConfiguration config = null;
@@ -13,7 +13,7 @@ public class Config_Manager {
     public boolean debug = false;
     public String lang = null;
 
-    public Config_Manager (JavaPlugin plugin) {
+    public ConfigManager(JavaPlugin plugin) {
         this.plugin = plugin;
         this.config = this.plugin.getConfig();
     }

@@ -1,11 +1,11 @@
-package tw.at.clo5de.worker.command;
+package tw.at.clo5de.salariesme.worker.command;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
-import tw.at.clo5de.SalariesMe;
-import tw.at.clo5de.worker.Handler;
+import tw.at.clo5de.salariesme.SalariesMe;
+import tw.at.clo5de.salariesme.worker.Handler;
 
 import static org.bukkit.Bukkit.getServer;
 

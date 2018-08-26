@@ -1,9 +1,9 @@
-package tw.at.clo5de.worker.command;
+package tw.at.clo5de.salariesme.worker.command;
 
 import org.bukkit.command.CommandSender;
-import tw.at.clo5de.SalariesMe;
-import tw.at.clo5de.worker.Handler;
-import tw.at.clo5de.worker.position.Position;
+import tw.at.clo5de.salariesme.SalariesMe;
+import tw.at.clo5de.salariesme.worker.Handler;
+import tw.at.clo5de.salariesme.worker.position.Position;
 
 import java.util.ArrayList;
 

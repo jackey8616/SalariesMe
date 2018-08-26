@@ -1,4 +1,4 @@
-package tw.at.clo5de.worker;
+package tw.at.clo5de.salariesme.worker;
 
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -7,8 +7,8 @@ import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
-import tw.at.clo5de.SalariesMe;
-import tw.at.clo5de.worker.position.Position;
+import tw.at.clo5de.salariesme.SalariesMe;
+import tw.at.clo5de.salariesme.worker.position.Position;
 
 import static org.bukkit.Bukkit.getServer;
 

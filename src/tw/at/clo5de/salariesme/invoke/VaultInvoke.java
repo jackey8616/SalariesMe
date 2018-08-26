@@ -1,9 +1,9 @@
-package tw.at.clo5de.invoke;
+package tw.at.clo5de.salariesme.invoke;
 
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.plugin.RegisteredServiceProvider;
-import tw.at.clo5de.SalariesMe;
+import tw.at.clo5de.salariesme.SalariesMe;
 
 import static org.bukkit.Bukkit.getServer;
 
